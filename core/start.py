@@ -1,0 +1,31 @@
+from core.sleuth import *
+from core.banner import banner
+import argparse
+import platform
+import os
+
+sys = platform.system()
+
+parse = argparse.ArgumentParser(description="[+] Tool for Web Scan")
+
+parse.add_argument("-u", "--url", action="store_true", help="Url that will be scanned.")
+parse.add_argument("-dS", "--dir-scan", action="store_true", help="Search for interesting dir's in url.")
+parse.add_argument("-wL", "--whois-lookup", action="store_true", help="Make a Whois Lookup on url.")
+parse.add_argument("-nS", "--nmap", action="store_true", help="Make a Nmap Scan in Site's IP.")
+parse.add_argument("-o", "--osint", type=str, required=False, help="Search by a nickname in a big lot of sites.")
+
+args = parse.parse_args()
+
+def start():
+    banner()
+    if args.url:
+        if args.whois_lookup:
+            whoislookup(args.url)
+        if args.nmap:
+            nmapscan(args.url)
+        if args.dir_scan:
+            searchdirectories(args.url)
+    if args.osint:
+        osint(args.osint)
+    else:
+        print(Fore.LIGHTRED_EX + "\n[!] Insert a URL to scan!\n")
