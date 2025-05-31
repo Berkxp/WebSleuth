@@ -14,12 +14,9 @@ def nmapscan(site):
     print(Fore.LIGHTCYAN_EX + "\n=================================" + Fore.RESET + "\r")
 
 def whoislookup(domain):
-    if domain.startswith("http://"):
-        domain = domain[7:]
-    elif domain.startswith("https://"):
-        domain = domain[8:]
-
-    if domain.endswith((".net", ".io", ".com", ".gov", ".br", ".ai", ".bet", ".org", ".name", ".pro", ".edu", ".biz", ".info", ".blog")):
+    urlp = urlparse(domain)
+    urlf = f"{urlp.netloc}"
+    if urlf.endswith((".net", ".io", ".com", ".gov", ".br", ".ai", ".bet", ".org", ".name", ".pro", ".edu", ".biz", ".info", ".blog")):
         try:
             w = whois.whois(domain)
             print(Fore.LIGHTRED_EX + "\n========== WHOIS LOOKUP =========\n" + Fore.RESET + "")
@@ -51,11 +48,12 @@ def searchdirectories(url):
         "/robots.txt",
         "/cart.php",
         "/home.php"
-]   
-    if url.endswith("/"):
-        url = url.split("/")[0]
-    for d in dirs:
-        urld = f"{url}{d}"
+]
+    for d in dirs:        
+        urlf = urlparse(url)
+        urls = f"{urlf.scheme}://{urlf.netloc}"
+        urld = f"{urls}{d}"
+        print
         try:
             req = requests.get(urld)
             if req.status_code == 200:
