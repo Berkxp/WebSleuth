@@ -8,7 +8,7 @@ sys = platform.system()
 
 parse = argparse.ArgumentParser(description="[+] Tool for Web Scan")
 
-parse.add_argument("-u", "--url", action="store_true", help="Url that will be scanned.")
+parse.add_argument("-u", "--url", type=str, help="Url that will be scanned.")
 parse.add_argument("-dS", "--dir-scan", action="store_true", help="Search for interesting dir's in url.")
 parse.add_argument("-wL", "--whois-lookup", action="store_true", help="Make a Whois Lookup on url.")
 parse.add_argument("-nS", "--nmap", action="store_true", help="Make a Nmap Scan in Site's IP.")
@@ -27,5 +27,3 @@ def start():
             searchdirectories(args.url)
     if args.osint:
         osint(args.osint)
-    else:
-        print(Fore.LIGHTRED_EX + "\n[!] Insert a URL to scan!\n")
