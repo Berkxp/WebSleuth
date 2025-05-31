@@ -2,10 +2,13 @@ import requests
 import socket
 import whois
 from colorama import *
+from urllib.parse import urlparse
 import os
 
 def nmapscan(site):
-    site = socket.gethostbyname(site)
+    site = urlparse(site)
+    siten = f"{site.netloc}"
+    site = socket.gethostbyname(siten)
     print(Fore.LIGHTCYAN_EX + "\n=========== NMAP SCAN ===========" + Fore.RESET + "\n")
     os.system(f"nmap -sV -T5 {site}")
     print(Fore.LIGHTCYAN_EX + "\n=================================" + Fore.RESET + "\r")
