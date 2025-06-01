@@ -3,7 +3,7 @@ Web Sleuth is a Hacker/Osint Tool that is made for scan sites, the functions is:
 
 - 🔍 Osint
 
-- 🔍 Search directories
+- 🔍 Subdomain Scanner
 
 - 🌐 Nmap Scan
 
@@ -26,8 +26,8 @@ But soon i will fix these problems.
 
 Usage: ```python websleuth.py -o 'nickname'```
 
-## Search Directories 🔍
-This function searches in user's url directories like "/admin/index.php", "/admin/login.php", "/cart.php" and others interesting directories, and if directory exists he returns the url, this works good, but i will make tests to look if have a bug or error.
+## Subdomain Scanner 🔍
+This functions will search by subdomains in the url, if the subdomain exists the script returns that he exists, else, he don't make anything, this is good to search for vulnerable url's in the site.
 
 Usage: ```python websleuth.py -u 'site's url' -dS```
 
