@@ -62,15 +62,25 @@ This function is a lot helpful to wlack Hat and white hat Hackers, because he sc
 ## Help
 Bellow is the options resumed's, you can find these info's typing "python websleuth.py -h" in Terminal, Help:
 
+
 Usage: websleuth.py [-h] [-u URL] [-S] [-nS] [-s] [-o] [-wL]
+
 
 [+] Tool for Web Scan
 
+
 Options:
+
   -h, --help            show this help message and exit
+
   -u, --url URL         Url that will be scanned.
+  
   -S, --sqli-scan       Scan for known vulnerabilities on the target URL.
+  
   -nS, --nmap           Make a Nmap Scan in Site's IP.
+  
   -s, --subdomain-scan  Search for interesting dir's in url.
+  
   -o, --osint           Osint the Nickname.
+  
   -wL, --whois-lookup   Make a Whois Lookup on url.
