@@ -25,7 +25,7 @@ def start():
             nmapscan(args.url)
         if args.subdomain_scan:
             searchdirectories(args.url)
-        if args.vuln_scan:
-            vulnscan(args.url)
+        if args.sqli_scan:
+            sqliscan(args.url)
     if args.osint:
         osint(args.osint)

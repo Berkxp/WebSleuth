@@ -9,31 +9,26 @@ def nmapscan(site):
     site = urlparse(site)
     siten = f"{site.netloc}"
     site = socket.gethostbyname(siten)
-    print(Fore.LIGHTCYAN_EX + "\n=========== NMAP SCAN ===========" + Fore.RESET + "\n")
+    print(Fore.LIGHTCYAN_EX + "\n=========== NMAP SCAN ===========" + Fore.RESET)
     os.system(f"nmap -sV -T5 {site}")
-    print(Fore.LIGHTCYAN_EX + "\n=================================" + Fore.RESET + "\r")
+    print(Fore.LIGHTCYAN_EX + "\n=================================" + Fore.RESET)
 
 def whoislookup(domain):
     urlp = urlparse(domain)
     urlf = f"{urlp.netloc}"
-    if urlf.endswith((".net", ".io", ".com", ".gov", ".br", ".ai", ".bet", ".org", ".name", ".pro", ".edu", ".biz", ".info", ".blog")):
-        try:
-            w = whois.whois(domain)
-            print(Fore.LIGHTRED_EX + "\n========== WHOIS LOOKUP =========\n" + Fore.RESET + "")
-            print(f"[+] Domain: {w.domain_name}")
-            print(f"[+] Registrator: {w.registrar}")
-            print(f"[+] Creation Date: {w.creation_date}")
-            print(f"[+] Expiration date: {w.expiration_date}")
-            print(f"[+] Owner's Name: {w.name}")
-            print(f"[+] Owner's Email: {w.email}")
-            print(f"[+] Phone: {w.phone}")
-            print(Fore.LIGHTRED_EX + "\n=================================" + Fore.RESET + "\r")
-        except Exception as e:
-            print(f"[!] Error: {e}")
-    else:
-        print("\n===========================================")
-        print(Fore.LIGHTRED_EX + "\n[!] " + Fore.RESET + "URL not recognized or not exist.\n")
-        print("===========================================")
+    try:
+        w = whois.whois(domain)
+        print(Fore.LIGHTRED_EX + "\n========== WHOIS LOOKUP =========\n" + Fore.RESET)
+        print(f"[+] Domain: {w.domain_name}")
+        print(f"[+] Registrator: {w.registrar}")
+        print(f"[+] Creation Date: {w.creation_date}")
+        print(f"[+] Expiration date: {w.expiration_date}")
+        print(f"[+] Owner's Name: {w.name}")
+        print(f"[+] Owner's Email: {w.email}")
+        print(f"[+] Phone: {w.phone}")
+        print(Fore.LIGHTRED_EX + "\n=================================" + Fore.RESET)
+    except Exception as e:
+        print(Fore.RED + f"[!] Error: {e}" + Fore.RESET)
 
 def searchdirectories(url):
     dirs = [
@@ -53,15 +48,14 @@ def searchdirectories(url):
         urlf = urlparse(url)
         urls = f"{urlf.scheme}://{urlf.netloc}"
         urld = f"{urls}{d}"
-        print
         try:
             req = requests.get(urld)
             if req.status_code == 200:
-                print(Fore.LIGHTGREEN_EX + f"\n[+] A interesting url in: {urld}" + Fore.RESET + "")
+                print(Fore.LIGHTGREEN_EX + f"\n[+] A interesting url in: {urld}" + Fore.RESET)
             else:
                 pass
         except requests.RequestException as e:
-            print(Fore.RED + f"\n[+] Error: {e}" + Fore.RESET + "")
+            print(Fore.RED + f"\n[+] Error: {e}" + Fore.RESET)
 
 def osint(nick):
     sites = [
@@ -145,12 +139,40 @@ def osint(nick):
     f"https://www.edx.org/user/{nick}",
     f"https://www.linkedin.com/learning/instructors/{nick}",
 ]
-    for site in sites:
+    for s in sites:
         try:
-            req = requests.get(site)
+            req = requests.get(s)
             if req.status_code == 200:
-                print(Fore.LIGHTGREEN_EX + f"\n[!] Account found in: {site}")
+                print(Fore.LIGHTGREEN_EX + f"\n[!] Account found in: {s}" + Fore.RESET)
             else:
                 pass
         except requests.RequestException as e:
-            pass
+            print(Fore.RED + f"[!] Error: {e}" + Fore.RESET)
+
+
+def sqliscan(u):
+    u = urlparse(u)
+    u = f"{u.scheme}://{u.netloc}/"
+    s = [
+        "cart.php",
+        "cart.php?id=1",
+        "cart.php?cat=1",
+        "shop.php",
+        "shop.php?id=1",
+        "shop.php?cat=1",
+        "gallery.php",
+        "gallery.php?id-1",
+        "gallery.php?cat=1",
+        "index.php",
+        "index.php?id=1", 
+        "index.php?cat=1",
+        "login.php",
+        "login.php?id=1",
+        "login.php?cat=1",
+        "add_cart.php",
+        "add_cart.php?id=1",
+        "add_cart.php?cat=1",
+        "signup.php",
+        "signup.php?id=1",
+        "signup.php?cat=1",
+    ]
