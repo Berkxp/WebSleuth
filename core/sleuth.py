@@ -30,7 +30,7 @@ def whoislookup(domain):
     except Exception as e:
         print(Fore.RED + f"[!] Error: {e}" + Fore.RESET)
 
-def searchdirectories(url):
+def subscan(url):
     dirs = [
         "/index.php",
         "/admin/index.php",
