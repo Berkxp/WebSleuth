@@ -57,7 +57,7 @@ but in python, works in Windows, Linux, MacOS idk.
 ## Sql Injection Scan 💉
 This function is a lot helpful to wlack Hat and white hat Hackers, because he scans a site to found probably Sql Injection vulnerable Subdomain, the subdomains that he scans is a little, but i will increase in future.
 
-- Usage: ```python websleuth.py -u "site's url" -S```
+- Usage: ```python websleuth.py -u "site's url" -S```
 
 ## Help
 Bellow is the options resumed's, you can find these info's typing "python websleuth.py -h" in Terminal, Help:
