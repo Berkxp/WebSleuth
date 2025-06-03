@@ -9,11 +9,13 @@ Web Sleuth is a Hacker/Osint Tool that is made for scan sites, the functions is:
 
 - 🔍 Whois Lookup
 
-## Index
+## Functions
 
-- [Osint Function](#osint-function)
-- [Directories Scan function](#search-directories)
-- [Nmap function](#nmap-scan)
+- [Osint 🔍](#osint-function)
+- [Subdomain Scan 🔍](#search-directories)
+- [Nmap 🌐](#nmap-scan)
+- [Sql Injection Scan 💉](#sql_injection_scan)
+- [Help](#help)
 
 ## Osint Function 🔍
 This Funtion is a little very simple, this function will send requests to a lot of sites with the nick that the user placed, if the status code = 200 then the function will return that the account exists, else, he pass, need a lot of upgrades, these upgrades will be added in future.
@@ -38,6 +40,37 @@ Example: ```python websleuth.py -u "site's url" -nS```
 .
 
 ## Whois Lookup 🔍
-This function make a whois lookup in the site's url, but in python, works in Windows, Linux, MacOS idk.
+This function make a whois lookup in the site's url returning the info bellow:
 
-Usage: ```python websleuth.py -u 'site's url' -wL```
+- Domain
+- Registrator
+- Creation Date
+- Expiration Date
+- Owner's Name
+- Owner's Email
+- Phone
+
+but in python, works in Windows, Linux, MacOS idk.
+
+- Usage: ```python websleuth.py "site's url" -wL```
+
+## Sql Injection Scan 💉
+This function is a lot helpful to wlack Hat and white hat Hackers, because he scans a site to found probably Sql Injection vulnerable Subdomain, the subdomains that he scans is a little, but i will increase in future.
+
+- Usage: ```python websleuth.py -u "site's url" -S```
+
+## Help
+Bellow is the options resumed's, you can find these info's typing "python websleuth.py -h" in Terminal, Help:
+
+Usage: websleuth.py [-h] [-u URL] [-S] [-nS] [-s] [-o] [-wL]
+
+[+] Tool for Web Scan
+
+Options:
+  -h, --help            show this help message and exit
+  -u, --url URL         Url that will be scanned.
+  -S, --sqli-scan       Scan for known vulnerabilities on the target URL.
+  -nS, --nmap           Make a Nmap Scan in Site's IP.
+  -s, --subdomain-scan  Search for interesting dir's in url.
+  -o, --osint           Osint the Nickname.
+  -wL, --whois-lookup   Make a Whois Lookup on url.
