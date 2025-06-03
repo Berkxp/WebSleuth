@@ -181,8 +181,7 @@ def sqliscan(u):
         try:
             r = requests.get(ur)
             if r.status_code == 200:
-                if "mysql" in r.text.lower():
-                    print(Fore.LIGHTGREEN_EX + f"\n[+] SqlI found on: {ur}\n" + Fore.RESET)
+                print(Fore.LIGHTGREEN_EX + f"\n[+] SqlI found on: {ur}\n" + Fore.RESET)
         except requests.RequestException as e:
             print(Fore.LIGHTRED_EX + f"\n[!] Error: {e}\n" + Fore.RESET)
     print(Fore.RED + "=====================================")
