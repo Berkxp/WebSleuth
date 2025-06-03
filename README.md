@@ -14,7 +14,7 @@ Web Sleuth is a Hacker/Osint Tool that is made for scan sites, the functions is:
 - [Osint 🔍](#osint-function)
 - [Subdomain Scan 🔍](#search-directories)
 - [Nmap 🌐](#nmap-scan)
-- [Sql Injection Scan 💉](#sql_injection_scan)
+- [Sql Injection Scan 💉](#sql-injection-scan-)
 - [Help](#help)
 
 ## Osint Function 🔍
