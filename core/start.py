@@ -13,7 +13,7 @@ parse.add_argument("-S", "--sqli-scan", action="store_true", help="Scan for know
 parse.add_argument("-s", "--subdomain-scan", action="store_true", help="Search for interesting dir's in url.")
 parse.add_argument("-nS", "--nmap", action="store_true", help="Make a Nmap Scan in Site's IP.")
 parse.add_argument("-o", "--osint", action="store_true", help="Osint the Nickname.")
-parse.add_argument("-wL", "--whois-lookup", action="store_true", help="Make a Whois Lookup on url.")
+parse.add_argument("-wL", "--whois-lookup", type=str, help="Make a Whois Lookup on url.")
 args = parse.parse_args()
 
 def start():
